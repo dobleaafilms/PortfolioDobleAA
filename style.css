@@ -3,10 +3,8 @@
     --card-bg: #151515;
     --text-color: #e0e0e0;
 
-    /* --- NUEVO COLOR APLICADO --- */
+    /* --- NUEVO COLOR APLICADO (Dorado) --- */
     --accent: #E29A3C;
-
-    /* He ajustado también el brillo (Glow) para que coincida con el #E29A3C */
     --accent-glow: rgba(226, 154, 60, 0.3);
 }
 
@@ -32,9 +30,9 @@ h3 {
 /* --- HERO SECTION --- */
 .hero {
     height: 100vh;
-    /* Imagen de fondo fija para efecto visual */
     background: url('imagenes/fondo-inicio.webp') no-repeat center center/cover;
     background-attachment: fixed;
+    /* Ojo: En móvil esto cambia abajo */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,6 +69,24 @@ h3 {
     font-weight: 300;
     margin-bottom: 40px;
     color: var(--accent);
+}
+
+/* Estilos de los Roles (Nuevo) */
+.hero-roles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    color: var(--accent);
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    font-weight: 300;
+}
+
+.separator {
+    opacity: 0.6;
+    font-weight: 400;
 }
 
 .divider {
@@ -119,8 +135,6 @@ h3 {
     color: #bbb;
 }
 
-
-
 /* --- SERVICIOS (CARDS) --- */
 .services-grid {
     display: grid;
@@ -144,7 +158,8 @@ h3 {
 
 .service-card i {
     font-size: 2.5rem;
-    color: var(--accent);
+    color: #ffffff;
+    /* Iconos blancos */
     margin-bottom: 20px;
 }
 
@@ -161,8 +176,7 @@ h3 {
     color: #888;
 }
 
-/* --- GALERÍA --- */
-/* --- NUEVOS TÍTULOS PRO --- */
+/* --- TÍTULOS PRO (Estilo Dorado) --- */
 h2 {
     font-size: 3rem;
     margin-bottom: 50px;
@@ -170,8 +184,7 @@ h2 {
     position: relative;
     text-transform: uppercase;
     letter-spacing: 3px;
-
-    /* Efecto Gradiente Dorado en el texto */
+    /* Efecto Gradiente Dorado */
     background: linear-gradient(45deg, #fff, var(--accent), #fff);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -179,7 +192,6 @@ h2 {
     animation: shine 3s linear infinite;
 }
 
-/* Línea decorativa debajo del título */
 h2::after {
     content: '';
     position: absolute;
@@ -192,26 +204,21 @@ h2::after {
     border-radius: 2px;
 }
 
-/* Animación del brillo del texto */
 @keyframes shine {
     to {
         background-position: 200% center;
     }
 }
 
-
-/* --- NUEVA GALERÍA TIPO MOSAICO (Pinterest Style) --- */
+/* --- GALERÍA PINTEREST --- */
 .gallery {
-    /* Esto crea las columnas tipo Pinterest */
     column-count: 3;
     column-gap: 20px;
 }
 
 .img-box {
     margin-bottom: 20px;
-    /* Espacio entre fotos verticales */
     break-inside: avoid;
-    /* Evita que una foto se parta en dos columnas */
     border-radius: 8px;
     overflow: hidden;
     position: relative;
@@ -224,61 +231,25 @@ h2::after {
 .img-box img {
     width: 100%;
     height: auto;
-    /* IMPORTANTE: Altura automática para que no se deforme */
     display: block;
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     filter: grayscale(80%) brightness(0.8);
-    /* Oscura y gris al principio */
+    /* Gris por defecto en PC */
 }
 
-/* Efecto al pasar el ratón (Hover) */
 .img-box:hover {
     transform: translateY(-10px);
-    /* La caja flota hacia arriba */
     border-color: var(--accent);
-    /* Sombra con el nuevo color (recalculado en accent-glow) */
     box-shadow: 0 15px 30px var(--accent-glow);
     z-index: 2;
 }
 
 .img-box:hover img {
     filter: grayscale(0%) brightness(1.1);
-    /* A todo color y brillante */
     transform: scale(1.1);
-    /* Zoom suave */
 }
 
-/* Ajuste para Móviles (1 sola columna) */
-@media (max-width: 768px) {
-    .gallery {
-        column-count: 1;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-}
-
-.img-box {
-    overflow: hidden;
-    border-radius: 4px;
-    height: 300px;
-}
-
-.img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-    filter: grayscale(30%);
-}
-
-.img-box:hover img {
-    transform: scale(1.1);
-    filter: grayscale(0%);
-}
-
-/* --- SLIDER FIXED (ARREGLADO) --- */
+/* --- SLIDER DE COMPARACIÓN --- */
 .comparison-slider {
     position: relative;
     width: 100%;
@@ -305,7 +276,6 @@ h2::after {
     display: block;
 }
 
-/* La imagen de encima (After) empieza al 50% */
 .after-image {
     width: 50%;
     border-right: 2px solid #fff;
@@ -313,7 +283,6 @@ h2::after {
     overflow: hidden;
 }
 
-/* Etiquetas Elegantes */
 .label {
     position: absolute;
     top: 15px;
@@ -332,14 +301,10 @@ h2::after {
     right: 15px;
 }
 
-/* Etiqueta Original a la derecha */
 .after-image .label {
     left: 15px;
 }
 
-/* Etiqueta Editada a la izquierda */
-
-/* El Input Invisible pero funcional */
 .slider {
     position: absolute;
     top: 0;
@@ -352,7 +317,6 @@ h2::after {
     margin: 0;
 }
 
-/* El botón central visual */
 .slider-button {
     position: absolute;
     top: 50%;
@@ -383,91 +347,24 @@ h2::after {
     height: 250px;
 }
 
-/* --- FOOTER --- */
-footer {
-    margin-top: 80px;
-    /* Espacio entre la web y el footer */
-    padding: 60px 20px;
-    /* Relleno interior del footer */
-    background: #000;
-    text-align: center;
-    border-top: 1px solid #222;
-}
-
-/* Espacio debajo del título "Contáctame..." */
-footer h3 {
-    margin-bottom: 40px;
-    /* <--- Aquí controlas la separación con los iconos */
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-}
-
-/* Estilo y separación de los iconos */
-.social-links {
-    margin-bottom: 40px;
-    /* <--- Aquí controlas la separación con el Copyright */
-}
-
-.social-links a {
-    font-size: 2rem;
-    /* Tamaño de los iconos */
-    color: #fff;
-    margin: 0 20px;
-    /* Separación lateral entre iconos */
-    transition: 0.3s;
-    display: inline-block;
-}
-
-.social-links a:hover {
-    color: var(--accent);
-    transform: translateY(-5px);
-    /* Pequeño saltito al pasar el ratón */
-}
-
-/* Texto de derechos de autor */
-footer p {
-    font-size: 0.8rem;
-    opacity: 0.5;
-    letter-spacing: 1px;
-}
-
-/* Ajuste Móvil */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .container {
-        padding: 50px 20px;
-    }
-}
-
-/* --- NUEVA SECCIÓN SOBRE MÍ (Foto + Texto) --- */
+/* --- SECCIÓN SOBRE MÍ (About) --- */
 .about-wrapper {
     display: flex;
     align-items: center;
-    /* Centra verticalmente */
     gap: 50px;
-    /* Espacio entre foto y texto */
     text-align: left;
-    /* Texto alineado a la izquierda para leer mejor */
 }
 
-/* Estilo de la Foto */
 .about-img {
     flex: 1;
-    /* Ocupa espacio proporcional */
     max-width: 400px;
-    /* Tamaño máximo de la foto */
     position: relative;
 }
 
 .about-img img {
     width: 100%;
     border-radius: 10px;
-    /* Bordes redondeados */
     box-shadow: -10px 10px 0 var(--accent);
-    /* Sombra sólida dorada estilo moderno */
     filter: grayscale(20%);
     transition: 0.5s;
 }
@@ -477,21 +374,22 @@ footer p {
     transform: translateY(-5px);
 }
 
-/* Estilo del Texto */
 .about-text {
     flex: 1.5;
-    /* El texto tiene un poco más de espacio que la foto */
 }
 
 .about-text h2 {
     margin-bottom: 20px;
-    /* Quitamos el centrado del h2 global solo aquí */
     display: block;
+    /* Ajustes específicos para 2 líneas */
+    font-size: 1.8rem;
+    line-height: 1.3;
+    max-width: 100%;
+    white-space: normal;
 }
 
 .about-text h2::after {
     left: 0;
-    /* Movemos la rayita dorada a la izquierda */
     transform: none;
 }
 
@@ -502,92 +400,116 @@ footer p {
     margin-bottom: 20px;
 }
 
-.signature {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    color: var(--accent);
-    font-style: italic;
+/* --- FOOTER --- */
+footer {
+    margin-top: 80px;
+    padding: 60px 20px;
+    background: #000;
+    text-align: center;
+    border-top: 1px solid #222;
 }
 
-/* --- MÓVIL (Responsive) --- */
+footer h3 {
+    margin-bottom: 40px;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.social-links {
+    margin-bottom: 40px;
+}
+
+.social-links a {
+    font-size: 2rem;
+    color: #fff;
+    margin: 0 20px;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.social-links a:hover {
+    color: var(--accent);
+    transform: translateY(-5px);
+}
+
+footer p {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    letter-spacing: 1px;
+}
+
+
+/* ================================================= */
+/* ============= MÓVIL (RESPONSIVE) ================ */
+/* ================================================= */
 @media (max-width: 768px) {
+
+    /* --- Arreglo 1: Estructura General --- */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .container {
+        padding: 50px 20px;
+    }
+
+    .gallery {
+        column-count: 1;
+    }
+
+    /* --- Arreglo 2: Fondo Fijo en móviles --- */
+    /* En móvil, 'fixed' suele fallar y romper los colores del fondo. 'scroll' lo arregla */
+    .hero {
+        background-attachment: scroll;
+    }
+
+    /* --- Arreglo 3: Roles Verticales --- */
+    .hero-roles {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    .role {
+        font-size: 1.3rem;
+        letter-spacing: 4px;
+    }
+
+    /* --- Arreglo 4: About Section Vertical --- */
     .about-wrapper {
         flex-direction: column;
-        /* Pone uno encima de otro en móvil */
         text-align: center;
     }
 
     .about-img {
         max-width: 80%;
-        /* Foto más pequeña en móvil */
         margin: 0 auto 30px auto;
-        /* Centrada */
     }
 
     .about-text h2::after {
         left: 50%;
-        /* Vuelve a centrar la rayita en móvil */
         transform: translateX(-50%);
     }
-}
 
-/* --- ESTILOS NUEVOS PARA LOS ROLES --- */
-.hero-roles {
-    display: flex;
-    /* Los pone en una caja flexible */
-    justify-content: center;
-    /* Los centra horizontalmente */
-    align-items: center;
-    /* Los alinea verticalmente */
-    gap: 15px;
-    /* Espacio entre palabra y barra */
-    margin-bottom: 40px;
-    /* Separación con el botón */
+    /* --- ¡IMPORTANTE PARA COLORES! --- */
+    /* En móvil no hay "Hover", así que quitamos el filtro gris */
+    /* para que las fotos se vean a todo color SIEMPRE */
 
-    /* Tus estilos de fuente originales */
-    color: var(--accent);
-    font-size: 1.2rem;
-    letter-spacing: 3px;
-    /* Un poco menos que 5px para que respire mejor */
-    font-weight: 300;
-}
-
-.separator {
-    opacity: 0.6;
-    /* Las barras un poco más suaves */
-    font-weight: 400;
-}
-
-/* --- REGLA PARA MÓVILES (Menos de 768px) --- */
-@media (max-width: 768px) {
-    .hero-roles {
-        flex-direction: column;
-        /* ¡Aquí está el truco! Los apila verticalmente */
-        gap: 12px;
-        /* Espacio entre cada profesión */
-
+    .img-box img {
+        filter: grayscale(0%) brightness(1.1);
+        /* Galería a todo color */
     }
 
-    .separator {
-        display: none;
-        /* Oculta las barras | en móvil para que quede limpio */
+    .about-img img {
+        filter: grayscale(0%);
+        /* Foto de perfil a todo color */
     }
 
-    .role {
-        font-size: 1.3rem;
-        /* Un pelín más grande en móvil para leerse bien */
-        letter-spacing: 4px;
+    /* Borde dorado siempre visible en móvil para dar vida */
+    .img-box {
+        border-color: rgba(226, 154, 60, 0.5);
     }
-}
-
-/* Seleccionamos específicamente el h2 dentro de about-text */
-.about-text h2 {
-    font-size: 1.8rem;
-    /* 1. Hazlo más pequeño (ajusta el número si lo quieres más o menos chico) */
-    line-height: 1.3;
-
-    /* 2. Truco clave: Limita el ancho a aprox 15 caracteres para forzar el salto de línea */
-
-    /* Opcional: Para asegurar que quede bonito y no corte palabras a la mitad */
-    overflow-wrap: break-word;
 }
