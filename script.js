@@ -1,6 +1,4 @@
-// ==========================================
-// 1. INICIAR ANIMACIONES DE SCROLL (AOS)
-// ==========================================
+// Animaciones al hacer scroll
 AOS.init({
     duration: 800,
     easing: 'ease-in-out',
@@ -8,94 +6,88 @@ AOS.init({
     offset: 100
 });
 
-// ==========================================
-// 2. LÓGICA DEL SLIDER (MOVER LA BARRA)
-// ==========================================
-const slider = document.getElementById("sliderRange");
-const afterImage = document.querySelector(".after-image");
-const sliderButton = document.querySelector(".slider-button");
-
-// Función que mueve visualmente la barra y la foto
-function moveSlider() {
-    const sliderVal = slider.value;
-    // Ancho de la imagen superior (la recortada)
-    afterImage.style.width = sliderVal + "%";
-    // Posición del botón central
-    sliderButton.style.left = sliderVal + "%";
-}
-
-// Escuchamos el movimiento (ratón o dedo)
-slider.addEventListener("input", moveSlider);
-slider.addEventListener("change", moveSlider);
-
-
-// ==========================================
-// 3. LÓGICA PARA CAMBIAR ENTRE FOTOS (NUEVO)
-// ==========================================
-
-// --- LISTA DE TUS FOTOS (CÁMBIALAS AQUÍ) ---
+// Configuración de fotos editadas
 const slides = [
     {
-        // Foto 1 (La que sale al principio)
         before: 'imagenes/antes.webp',
         after: 'imagenes/despues.webp'
     },
     {
-        // Foto 2
-        before: 'imagenes/antes2.webp', // <--- Pon aquí la ruta real
+        before: 'imagenes/antes2.webp',
         after: 'imagenes/despues2.webp'
     },
     {
-        // Foto 3
-        before: 'imagenes/antes3.webp', // <--- Pon aquí la ruta real
+        before: 'imagenes/antes3.webp',
         after: 'imagenes/despues3.webp'
     }
-    // Puedes añadir más bloques {} con comas si quieres más fotos
 ];
 
-let currentSlide = 0; // Empezamos en la primera (índice 0)
+let currentSlide = 0;
 
-// Seleccionamos los elementos del HTML que vamos a cambiar
+// Referencias del DOM
+const sliderContainer = document.querySelector('.comparison-slider');
+const sliderRange = document.getElementById("sliderRange");
+const afterImageDiv = document.querySelector(".after-image");
+const sliderButton = document.querySelector(".slider-button");
 const imgBefore = document.getElementById('imgBefore');
 const imgAfter = document.getElementById('imgAfter');
 const counter = document.getElementById('slide-counter');
 
-// Función principal que actualiza las fotos y el contador
+
+// Lógica para la deformación de las fotos al deslizar para el antes y después
+function fixImageWidth() {
+    // Calculamos el ancho total del container
+    const totalWidth = sliderContainer.offsetWidth;
+
+    // Forzamos la imagen de depués a tener ese ancho fijo en píxeles
+    imgAfter.style.width = totalWidth + 'px';
+}
+
+// Ejecutamos esto al cargar y cada vez que cambies el tamaño de la ventana
+window.addEventListener('resize', fixImageWidth);
+// También lo lanzamos ya mismo por si acaso
+fixImageWidth();
+
+
+// Lógica del slider
+function moveSlider() {
+    const sliderVal = sliderRange.value;
+    // Mueve el corte de la caja donde esta las imágenes
+    afterImageDiv.style.width = sliderVal + "%";
+    // Mueve el botón
+    sliderButton.style.left = sliderVal + "%";
+}
+
+sliderRange.addEventListener("input", moveSlider);
+sliderRange.addEventListener("change", moveSlider);
+
+
+// Cambiar entre fotos
 function updateImages() {
-    // 1. Cambiamos la ruta (src) de las imágenes
     imgBefore.src = slides[currentSlide].before;
     imgAfter.src = slides[currentSlide].after;
 
-    // 2. Actualizamos el texto del contador (Ej: "2 / 3")
-    counter.innerText = `${currentSlide + 1} / ${slides.length}`;
+    if (counter) counter.innerText = `${currentSlide + 1} / ${slides.length}`;
 
-    // 3. REINICIAR LA BARRA AL CENTRO (Opcional, pero queda mejor)
-    slider.value = 50;
-    moveSlider(); // Llamamos a la función de arriba para que se coloque al medio
+    // Reseteamos al centro
+    sliderRange.value = 50;
+    moveSlider();
+
+    // Recalculamos el ancho por si acaso la imagen nueva tarda en cargar
+    setTimeout(fixImageWidth, 100);
 }
 
-// Función para el botón "Siguiente"
 function nextSlide() {
     currentSlide++;
-    // Si llegamos al final, volvemos al principio (bucle infinito)
-    if (currentSlide >= slides.length) {
-        currentSlide = 0;
-    }
+    if (currentSlide >= slides.length) currentSlide = 0;
     updateImages();
 }
 
-// Función para el botón "Anterior"
 function prevSlide() {
     currentSlide--;
-    // Si estamos en el principio y damos atrás, vamos a la última
-    if (currentSlide < 0) {
-        currentSlide = slides.length - 1;
-    }
+    if (currentSlide < 0) currentSlide = slides.length - 1;
     updateImages();
 }
 
-// Inicializamos el contador nada más cargar la página
-// (Para asegurar que ponga "1 / 3" si tienes 3 fotos)
-if (counter) {
-    counter.innerText = `1 / ${slides.length}`;
-}
+// Inicializar texto del contador
+if (counter) { counter.innerText = `1 / ${slides.length}`; }
