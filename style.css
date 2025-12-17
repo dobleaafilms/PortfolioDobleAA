@@ -625,23 +625,14 @@ footer {
     margin: 0;
 }
 
-/* ========================================================== */
-/* ==================== MEDIA QUERIES ======================= */
-/* =============== (AQUÍ ESTÁ LA MAGIA) ===================== */
-/* ========================================================== */
-
-/* Solo para PC y Tablets grandes (2 columnas en servicios) */
 @media (min-width: 768px) {
     .services-grid {
         grid-template-columns: 1fr 1fr;
-        /* 2 Columnas exactas */
     }
 }
 
-/* Solo para MÓVIL (Todo lo que se rompió, arreglado aquí) */
 @media (max-width: 768px) {
 
-    /* 1. HERO Y TEXTOS */
     .hero h1 {
         font-size: 2.5rem;
     }
@@ -650,9 +641,6 @@ footer {
         background-attachment: scroll;
     }
 
-    /* Arregla el fondo que desaparece */
-
-    /* 2. ROLES VERTICALES */
     .hero-roles {
         flex-direction: column;
         gap: 12px;
@@ -667,17 +655,14 @@ footer {
         letter-spacing: 4px;
     }
 
-    /* 3. LAYOUT GENERAL */
     .container {
         padding: 50px 20px;
     }
 
-    /* 4. GALERÍA EN 1 COLUMNA */
     .gallery {
         column-count: 1;
     }
 
-    /* 5. SECCIÓN SOBRE MÍ (Foto arriba, texto abajo) */
     .about-wrapper {
         flex-direction: column;
         text-align: center;
@@ -693,19 +678,15 @@ footer {
         transform: translateX(-50%);
     }
 
-    /* 6. COLORES EN MÓVIL (Sin hover) */
     .img-box img,
     .about-img img {
         filter: grayscale(0%) brightness(1.1);
-        /* Todo color siempre */
     }
 
     .img-box {
         border-color: rgba(226, 154, 60, 0.5);
-        /* Borde dorado suave */
     }
 
-    /* 7. FOOTER MÓVIL */
     .footer-top {
         flex-direction: column;
         align-items: center;
@@ -722,5 +703,24 @@ footer {
     .footer-nav h4,
     .footer-contact h4 {
         border-bottom: none;
+    }
+
+    .slider-controls {
+        gap: 10px;
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+
+    .nav-btn {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        width: auto;
+    }
+
+    #slide-counter {
+        white-space: nowrap;
+        font-size: 0.9rem;
+        min-width: 50px;
+        text-align: center;
     }
 }
