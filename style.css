@@ -1,0 +1,581 @@
+:root {
+    --bg-color: #0b0b0b;
+    --card-bg: #151515;
+    --text-color: #e0e0e0;
+
+    /* --- NUEVO COLOR APLICADO --- */
+    --accent: #E29A3C;
+
+    /* He ajustado también el brillo (Glow) para que coincida con el #E29A3C */
+    --accent-glow: rgba(226, 154, 60, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 100vh;
+    /* Imagen de fondo fija para efecto visual */
+    background: url('fondo-inicio.webp') no-repeat center center/cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), var(--bg-color));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    margin: 0;
+    color: #fff;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: var(--accent);
+}
+
+.divider {
+    height: 2px;
+    width: 80px;
+    background: var(--accent);
+    margin: 20px auto;
+}
+
+/* --- BOTÓN PRO --- */
+.btn {
+    position: relative;
+    padding: 15px 40px;
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+    transition: 0.5s;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #000;
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* --- SECCIONES GENERALES --- */
+.container {
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bio-text {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+    color: #bbb;
+}
+
+
+
+/* --- SERVICIOS (CARDS) --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background: var(--card-bg);
+    padding: 40px 20px;
+    border: 1px solid #222;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.service-card p {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* --- GALERÍA --- */
+/* --- NUEVOS TÍTULOS PRO --- */
+h2 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    display: inline-block;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+    /* Efecto Gradiente Dorado en el texto */
+    background: linear-gradient(45deg, #fff, var(--accent), #fff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+}
+
+/* Línea decorativa debajo del título */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+/* Animación del brillo del texto */
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+
+/* --- NUEVA GALERÍA TIPO MOSAICO (Pinterest Style) --- */
+.gallery {
+    /* Esto crea las columnas tipo Pinterest */
+    column-count: 3;
+    column-gap: 20px;
+}
+
+.img-box {
+    margin-bottom: 20px;
+    /* Espacio entre fotos verticales */
+    break-inside: avoid;
+    /* Evita que una foto se parta en dos columnas */
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #222;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.img-box img {
+    width: 100%;
+    height: auto;
+    /* IMPORTANTE: Altura automática para que no se deforme */
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: grayscale(80%) brightness(0.8);
+    /* Oscura y gris al principio */
+}
+
+/* Efecto al pasar el ratón (Hover) */
+.img-box:hover {
+    transform: translateY(-10px);
+    /* La caja flota hacia arriba */
+    border-color: var(--accent);
+    /* Sombra con el nuevo color (recalculado en accent-glow) */
+    box-shadow: 0 15px 30px var(--accent-glow);
+    z-index: 2;
+}
+
+.img-box:hover img {
+    filter: grayscale(0%) brightness(1.1);
+    /* A todo color y brillante */
+    transform: scale(1.1);
+    /* Zoom suave */
+}
+
+/* Ajuste para Móviles (1 sola columna) */
+@media (max-width: 768px) {
+    .gallery {
+        column-count: 1;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+.img-box {
+    overflow: hidden;
+    border-radius: 4px;
+    height: 300px;
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    filter: grayscale(30%);
+}
+
+.img-box:hover img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+/* --- SLIDER FIXED (ARREGLADO) --- */
+.comparison-slider {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 16/9;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* La imagen de encima (After) empieza al 50% */
+.after-image {
+    width: 50%;
+    border-right: 2px solid #fff;
+    z-index: 2;
+    overflow: hidden;
+}
+
+/* Etiquetas Elegantes */
+.label {
+    position: absolute;
+    top: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+}
+
+.before-image .label {
+    right: 15px;
+}
+
+/* Etiqueta Original a la derecha */
+.after-image .label {
+    left: 15px;
+}
+
+/* Etiqueta Editada a la izquierda */
+
+/* El Input Invisible pero funcional */
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: ew-resize;
+    z-index: 10;
+    margin: 0;
+}
+
+/* El botón central visual */
+.slider-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* --- VIDEO --- */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.video-item iframe {
+    border-radius: 5px;
+    height: 250px;
+}
+
+/* --- FOOTER --- */
+footer {
+    margin-top: 80px;
+    /* Espacio entre la web y el footer */
+    padding: 60px 20px;
+    /* Relleno interior del footer */
+    background: #000;
+    text-align: center;
+    border-top: 1px solid #222;
+}
+
+/* Espacio debajo del título "Contáctame..." */
+footer h3 {
+    margin-bottom: 40px;
+    /* <--- Aquí controlas la separación con los iconos */
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+/* Estilo y separación de los iconos */
+.social-links {
+    margin-bottom: 40px;
+    /* <--- Aquí controlas la separación con el Copyright */
+}
+
+.social-links a {
+    font-size: 2rem;
+    /* Tamaño de los iconos */
+    color: #fff;
+    margin: 0 20px;
+    /* Separación lateral entre iconos */
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.social-links a:hover {
+    color: var(--accent);
+    transform: translateY(-5px);
+    /* Pequeño saltito al pasar el ratón */
+}
+
+/* Texto de derechos de autor */
+footer p {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    letter-spacing: 1px;
+}
+
+/* Ajuste Móvil */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .container {
+        padding: 50px 20px;
+    }
+}
+
+/* --- NUEVA SECCIÓN SOBRE MÍ (Foto + Texto) --- */
+.about-wrapper {
+    display: flex;
+    align-items: center;
+    /* Centra verticalmente */
+    gap: 50px;
+    /* Espacio entre foto y texto */
+    text-align: left;
+    /* Texto alineado a la izquierda para leer mejor */
+}
+
+/* Estilo de la Foto */
+.about-img {
+    flex: 1;
+    /* Ocupa espacio proporcional */
+    max-width: 400px;
+    /* Tamaño máximo de la foto */
+    position: relative;
+}
+
+.about-img img {
+    width: 100%;
+    border-radius: 10px;
+    /* Bordes redondeados */
+    box-shadow: -10px 10px 0 var(--accent);
+    /* Sombra sólida dorada estilo moderno */
+    filter: grayscale(20%);
+    transition: 0.5s;
+}
+
+.about-img:hover img {
+    filter: grayscale(0%);
+    transform: translateY(-5px);
+}
+
+/* Estilo del Texto */
+.about-text {
+    flex: 1.5;
+    /* El texto tiene un poco más de espacio que la foto */
+}
+
+.about-text h2 {
+    margin-bottom: 20px;
+    /* Quitamos el centrado del h2 global solo aquí */
+    display: block;
+}
+
+.about-text h2::after {
+    left: 0;
+    /* Movemos la rayita dorada a la izquierda */
+    transform: none;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+.signature {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--accent);
+    font-style: italic;
+}
+
+/* --- MÓVIL (Responsive) --- */
+@media (max-width: 768px) {
+    .about-wrapper {
+        flex-direction: column;
+        /* Pone uno encima de otro en móvil */
+        text-align: center;
+    }
+
+    .about-img {
+        max-width: 80%;
+        /* Foto más pequeña en móvil */
+        margin: 0 auto 30px auto;
+        /* Centrada */
+    }
+
+    .about-text h2::after {
+        left: 50%;
+        /* Vuelve a centrar la rayita en móvil */
+        transform: translateX(-50%);
+    }
+}
+
+/* --- ESTILOS NUEVOS PARA LOS ROLES --- */
+.hero-roles {
+    display: flex;
+    /* Los pone en una caja flexible */
+    justify-content: center;
+    /* Los centra horizontalmente */
+    align-items: center;
+    /* Los alinea verticalmente */
+    gap: 15px;
+    /* Espacio entre palabra y barra */
+    margin-bottom: 40px;
+    /* Separación con el botón */
+
+    /* Tus estilos de fuente originales */
+    color: var(--accent);
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    /* Un poco menos que 5px para que respire mejor */
+    font-weight: 300;
+}
+
+.separator {
+    opacity: 0.6;
+    /* Las barras un poco más suaves */
+    font-weight: 400;
+}
+
+/* --- REGLA PARA MÓVILES (Menos de 768px) --- */
+@media (max-width: 768px) {
+    .hero-roles {
+        flex-direction: column;
+        /* ¡Aquí está el truco! Los apila verticalmente */
+        gap: 12px;
+        /* Espacio entre cada profesión */
+
+    }
+
+    .separator {
+        display: none;
+        /* Oculta las barras | en móvil para que quede limpio */
+    }
+
+    .role {
+        font-size: 1.3rem;
+        /* Un pelín más grande en móvil para leerse bien */
+        letter-spacing: 4px;
+    }
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dobleAA - Visual Arts</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
+            <h1>DOBLEAA FILMS</h1>
+            <div class="divider"></div>
+            <div class="hero-roles">
+                <span class="role">FOTÓGRAFA</span>
+                <span class="separator">|</span>
+                <span class="role">VIDEÓGRAFA</span>
+                <span class="separator">|</span>
+                <span class="role">EDITORA</span>
+            </div>
+            <a href="#portfolio" class="btn"><span>Ver Portfolio</span></a>
+        </div>
+    </header>
+
+    <section id="about" class="container">
+        <div class="about-wrapper">
+            <div class="about-img" data-aos="fade-right">
+                <img src="foto-perfil.webp" alt="Alba Merino">
+            </div>
+
+            <div class="about-text" data-aos="fade-left">
+                <h2>NO HAGO FOTOS, INMORTALIZO MOMENTOS</h2>
+                <p class="bio-text">
+                    Me llamo <strong>Alba</strong>. Me fascina cazar esos segundos que ya no vuelven, pero que, además
+                    de permanecer
+                    siempre en vuestra memoria, yo os ofrezco la posibilidad de poder verlos de nuevo una y otra vez.
+                </p>
+                <p class="bio-text">
+                    Lo mío es capturar la risa floja, la mirada cómplice y el caos bonito. Ya sea cámara en mano o
+                    editando, busco que cada reportaje tenga vida propia.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <h2 data-aos="fade-right">¿Qué necesitas?</h2>
+            <div class="services-grid">
+                <div class="service-card" data-aos="zoom-in">
+                    <i class="fas fa-ring"></i>
+                    <h3>Bodas</h3>
+                    <p>Sin guiones. Solo vosotros siendo vosotros.</p>
+                </div>
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-camera-retro"></i>
+                    <h3>Eventos & Social</h3>
+                    <p>Comuniones, fiestas.</p>
+                </div>
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-magic"></i>
+                    <h3>Edición High-End</h3>
+                    <p>Retoque digital, color grading y magia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="container">
+        <h2 data-aos="fade-right">Galería</h2>
+        <div class="gallery">
+            <div class="img-box" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=600&q=80"
+                    alt="Retrato Vertical">
+            </div>
+
+            <div class="img-box" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&h=400&q=80"
+                    alt="Paisaje">
+            </div>
+
+            <div class="img-box" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&h=800&q=80"
+                    alt="Modelo">
+            </div>
+
+            <div class="img-box" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1511285560982-1351cdeb9821?auto=format&fit=crop&w=600&h=600&q=80"
+                    alt="Boda">
+            </div>
+
+            <div class="img-box" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=600&h=400&q=80"
+                    alt="Viaje">
+            </div>
+
+            <div class="img-box" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=600&h=750&q=80"
+                    alt="Cámara">
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 data-aos="fade-right">La Magia de la Edición</h2>
+        <p style="margin-bottom: 20px; opacity: 0.7;">Desliza para ver el retoque</p>
+
+        <div class="comparison-slider" data-aos="zoom-in">
+            <div class="image-wrapper before-image">
+                <img src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80&sat=-100"
+                    alt="Antes">
+                <span class="label">Original</span>
+            </div>
+            <div class="image-wrapper after-image">
+                <img src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Después">
+                <span class="label">Editada</span>
+            </div>
+            <input type="range" min="0" max="100" value="50" class="slider" id="sliderRange">
+            <div class="slider-line"></div>
+            <div class="slider-button"><i class="fas fa-arrows-alt-h"></i></div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 data-aos="fade-right">Videos</h2>
+        <div class="video-grid">
+            <div class="video-item" data-aos="flip-up">
+                <iframe src="https://www.youtube.com/embed/2g811Eo7K8U" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-item" data-aos="flip-up" data-aos-delay="100">
+                <iframe src="https://www.youtube.com/embed/LXb3EKWsInQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h3>Contáctame sin compromiso</h3>
+        <div class="social-links">
+            <a href="https://www.instagram.com/dobleaa.films/" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="mailto:albamerinoferreiro@gmail.com" title="Enviar Correo">
+                <i class="far fa-envelope"></i>
+            </a>
+
+        </div>
+        <p>&copy; 2025 Derechos Reservados dobleAA</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
