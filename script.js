@@ -95,3 +95,39 @@ function prevSlide() {
 
 // Inicializar texto del contador
 if (counter) { counter.innerText = `1 / ${slides.length}`; }
+
+// --- Lógica de Pestañas de Precios ---
+
+function openTab(evt, tabName) {
+    // Ocultar todos los contenidos (clase .tab-content)
+    const tabContents = document.getElementsByClassName("tab-content");
+    for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].style.display = "none";
+        tabContents[i].classList.remove("active-content");
+    }
+
+    // Quitar la clase 'active' de todos los botones
+    const tabLinks = document.getElementsByClassName("tab-btn");
+    for (let i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].classList.remove("active");
+    }
+
+    // Mostrar el contenido actual y activar el botón pulsado
+    document.getElementById(tabName).style.display = "block";
+    
+    // Pequeño timeout para permitir la animación CSS
+    setTimeout(() => {
+        document.getElementById(tabName).classList.add("active-content");
+    }, 10);
+    
+    evt.currentTarget.classList.add("active");
+    
+    // Refrescar AOS para que detecte los nuevos elementos si estaban ocultos
+    AOS.refresh(); 
+}
+
+// Inicializar: Asegurar que la primera pestaña esté visible correctamente al cargar
+document.addEventListener("DOMContentLoaded", () => {
+    // Simulamos un click en el primer botón para que arranque bien
+    document.querySelector(".tab-btn.active").click();
+});
