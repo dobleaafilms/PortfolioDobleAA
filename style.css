@@ -819,10 +819,20 @@ footer {
 }
 
 .price-header h3 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.package-num {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--accent);
+    letter-spacing: 3px;
+    margin-bottom: 5px;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
-    color: #fff;
-    margin-bottom: 10px;
+    font-weight: 400;
 }
 
 .price {
@@ -840,11 +850,11 @@ footer {
 }
 
 .features li {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     color: #bbb;
     font-size: 0.95rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
 }
 
@@ -852,6 +862,7 @@ footer {
     color: #ffffff;
     min-width: 25px; 
     text-align: center;
+    margin-top: 4px;
 }
 
 .features li.disabled {
